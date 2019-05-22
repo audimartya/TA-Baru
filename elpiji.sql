@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2019 at 11:14 AM
+-- Generation Time: May 22, 2019 at 08:29 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -42,7 +42,13 @@ INSERT INTO `distribusi1` (`id_kirim1`, `tanggal`, `jumlah_gas`, `asal`, `tujuan
 (2, '2019-04-25', 45678, 0, 1),
 (5, '2019-04-29', 80, 4, 5),
 (6, '2019-04-30', 100, 6, 9),
-(7, '2019-04-30', 100, 6, 9);
+(7, '2019-04-30', 100, 6, 9),
+(8, '2019-05-06', 35, 13, 14),
+(9, '2019-05-06', 35, 13, 14),
+(10, '2019-05-06', 125, 11, 11),
+(11, '2019-05-06', 125, 11, 11),
+(12, '2019-05-07', 200, 10, 13),
+(13, '2019-05-07', 200, 10, 13);
 
 -- --------------------------------------------------------
 
@@ -70,10 +76,9 @@ CREATE TABLE `distribusi2` (
 --
 
 INSERT INTO `distribusi2` (`id_kirim2`, `tanggal`, `jumlah_gas`, `nama_pembeli`, `id_pangkalan`, `no_tlp`, `alamat_pembeli`, `jenis_pembeli`, `keterangan`, `paraf_pembeli`, `asal`, `tujuan`) VALUES
-(1, '2019-04-30', 25, 'a', 0, 1, 'a', 'RT', 'a', '104.jpg', 5, 4),
-(4, '2019-04-29', 34, 'sdfg', 3, 32425, 'gh', 'UMK', 'ezrxdtcfyv', '3.jpg', 5, 6),
-(5, '2019-06-21', 24, 'a', 0, 1, 'a', 'Pengecer', 'c', 'a.jpg', 7, 8),
-(6, '2019-05-02', 24, 'a', 0, 1, 'a', 'Pengecer', 'c', 'a.jpg', 7, 8);
+(8, '2019-05-06', 100, 'Au', 3, 3, 'a', 'RT', 'ezrxdtcfyv', '104.jpg', 16, 12),
+(9, '2019-05-06', 100, 'Au', 3, 3, 'a', 'RT', 'ezrxdtcfyv', '104.jpg', 16, 12),
+(11, '2019-05-07', 50, 'a', 3, 1, 's', 'RT', 'a', 'd', 18, 13);
 
 -- --------------------------------------------------------
 
@@ -110,21 +115,24 @@ CREATE TABLE `member_elpiji` (
   `alamat` varchar(100) NOT NULL,
   `no_ktp` int(20) NOT NULL,
   `no_tlp` int(15) NOT NULL,
-  `id_login` int(5) NOT NULL,
   `paraf_pembeli` varchar(50) NOT NULL,
-  `jenis` enum('agen','pangkalan','pengecer','') NOT NULL
+  `jenis` enum('agen','pangkalan','pengecer') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member_elpiji`
 --
 
-INSERT INTO `member_elpiji` (`id_member`, `no_reg`, `nama_member`, `nama_pangkalan`, `alamat`, `no_ktp`, `no_tlp`, `id_login`, `paraf_pembeli`, `jenis`) VALUES
-(5, 0, 'vavabre', '', 'SDFGHJKL', 0, 23421, 0, '63.jpg', 'pengecer'),
-(6, 0, 'dsfghjk', '', 'aaaaaaaaaaaaaaaaaaa', 0, 2345678, 0, '102.jpg', 'pengecer'),
-(7, 0, 'xsac', 'NULL', 'fghj', 0, 3456789, 0, '64.jpg', 'pengecer'),
-(8, 0, 'cvkdstcfsak', 'NULL', 'cksuacgakbak', 0, 34567890, 0, '121.jpg', 'pengecer'),
-(10, 0, 'a', 'NULL', 'a', 0, 1, 0, '86.jpg', 'pengecer');
+INSERT INTO `member_elpiji` (`id_member`, `no_reg`, `nama_member`, `nama_pangkalan`, `alamat`, `no_ktp`, `no_tlp`, `paraf_pembeli`, `jenis`) VALUES
+(10, 1, 'a', 'a', 'a', 1, 1, '', 'agen'),
+(11, 0, 'a', 'NULL', 'a', 0, 1, '45.jpg', 'agen'),
+(12, 4, 's', 'a', 'a', 2, 3, '', 'agen'),
+(13, 4, 's', 'a', 'a', 2, 3, '', 'agen'),
+(14, 0, 'fdsa', 'vasvda', 'vafbadbabaf', 3252, 6346534, 'a.jpg', 'pangkalan'),
+(15, 0, 'fdsa', 'vasvda', 'vafbadbabaf', 3252, 6346534, 'a.jpg', 'pangkalan'),
+(16, 1, 'a', 'a', 'a', 1, 1, '', 'agen'),
+(17, 1, 'a', 'a', 'a', 1, 1, '', 'agen'),
+(18, 0, 'aev', 'NULL', 'vas', 0, 42, '46.jpg', 'pengecer');
 
 -- --------------------------------------------------------
 
@@ -163,13 +171,6 @@ CREATE TABLE `stock_elpiji` (
   `stock_keluar` int(5) NOT NULL,
   `stock_total` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `stock_elpiji`
---
-
-INSERT INTO `stock_elpiji` (`id_member`, `tanggal`, `stock_datang`, `stock_keluar`, `stock_total`) VALUES
-(5, '2019-05-02', 30, 30, 60);
 
 --
 -- Indexes for dumped tables
@@ -213,22 +214,17 @@ ALTER TABLE `pengembalian`
 -- AUTO_INCREMENT for table `distribusi1`
 --
 ALTER TABLE `distribusi1`
-  MODIFY `id_kirim1` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_kirim1` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `distribusi2`
 --
 ALTER TABLE `distribusi2`
-  MODIFY `id_kirim2` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `login`
---
-ALTER TABLE `login`
-  MODIFY `id_login` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kirim2` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `member_elpiji`
 --
 ALTER TABLE `member_elpiji`
-  MODIFY `id_member` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_member` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `pengembalian`
 --
